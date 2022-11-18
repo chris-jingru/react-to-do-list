@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 
 function App() {
   /* pseudo code 
@@ -9,15 +10,25 @@ function App() {
   5. checker box is clicked, the item will be striked out.
   */
 
+  const [parks, setParks] = useState([]);
+
+  const inputHandler = (event) => {
+    setParks(event.target.value);
+  };
+
+  const addPark = (e) => {
+    e.preventDefault();
+    setParks([]);
+  };
+
   return (
     <>
-      <h1>To Do List</h1>
-      <form action="">
-        <label htmlFor="item">Please add to do items</label>
-        <input type="text" id="item" />
+      <h1>Park Lists</h1>
+      <form onSubmit={addPark}>
+        <input type="text" onChange={inputHandler} value={parks} />
+        <button>Add Park</button>
       </form>
-      <button>confirm</button>
-      <ul></ul>
+      <ul>{}</ul>
     </>
   );
 }
